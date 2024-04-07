@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://ysl6d6rxd37g"]
+
+[ext_resource type="Script" path="res://Scenes/Frigate/Frigate.gd" id="1_tb3f6"]
+[ext_resource type="PackedScene" uid="uid://dw6dfy6devcue" path="res://Scenes/Frigate/Models/ModelFrigate.tscn" id="2_giwyj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ici0h"]
+albedo_color = Color(0.435294, 0.423529, 0.458824, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vfc8i"]
+material = SubResource("StandardMaterial3D_ici0h")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uqn1k"]
+radius = 4.72671
+height = 19.2273
+
+[node name="Frigate" type="CharacterBody3D"]
+collision_mask = 48
+script = ExtResource("1_tb3f6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+visible = false
+cast_shadow = 0
+mesh = SubResource("BoxMesh_vfc8i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-8.74228e-08, -2, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 4.91364, 0)
+shape = SubResource("CapsuleShape3D_uqn1k")
+
+[node name="Frigate" parent="." instance=ExtResource("2_giwyj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.34561, 0)

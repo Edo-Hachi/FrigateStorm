@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dw6dfy6devcue"]
+
+[ext_resource type="PackedScene" uid="uid://31ojntsnv2tv" path="res://Scenes/Frigate/Models/Frigate.glb" id="1_lih7x"]
+
+[node name="Frigate" instance=ExtResource("1_lih7x")]
+
+[node name="Cube" parent="." index="0"]
+cast_shadow = 0

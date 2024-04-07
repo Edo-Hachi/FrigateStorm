@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://c72m1dt1aqn20"]
+
+[ext_resource type="PackedScene" uid="uid://ysl6d6rxd37g" path="res://Scenes/Frigate/Frigate.tscn" id="1_5kf3m"]
+[ext_resource type="PackedScene" uid="uid://by0rwn81e0oo2" path="res://Scenes/WaterLine/WaterLine.tscn" id="2_7pa7d"]
+[ext_resource type="PackedScene" uid="uid://ccgbihr0a8frt" path="res://Scenes/Submarine/Submarine.tscn" id="3_hn0ve"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ayyqr"]
+albedo_color = Color(0.509804, 0.772549, 0.956863, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5y6bh"]
+material = SubResource("StandardMaterial3D_ayyqr")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kynhr"]
+render_priority = 1
+albedo_color = Color(0.14902, 0.0980392, 1, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6q48m"]
+material = SubResource("StandardMaterial3D_kynhr")
+
+[node name="Stage" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0.435521, -0.407678, 0.802571, -0.245604, 0.803927, 0.541646, -181.022, 323.483, 27.9552)
+light_energy = 1.5
+shadow_enabled = true
+
+[node name="Frigate" parent="." instance=ExtResource("1_5kf3m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 97.5133, 0)
+collision_mask = 263
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 400)
+projection = 1
+size = 300.0
+far = 500.0
+
+[node name="BackGroundMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(200, 0, 0, 0, -8.74228e-06, -200, 0, 200, -8.74228e-06, 0, 0, -54.9551)
+mesh = SubResource("PlaneMesh_5y6bh")
+
+[node name="WaterLine" parent="." instance=ExtResource("2_7pa7d")]
+transform = Transform3D(3.42148, 0, 0, 0, 1, 0, 0, 0, 1, 0, 83.6429, 0)
+
+[node name="MarineMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(170.205, 0, 0, 0, -4.37114e-08, -121.18, 0, 1, -5.29693e-06, 0, -34.3977, 16.8747)
+transparency = 0.3
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_6q48m")
+
+[node name="Submarine" parent="." instance=ExtResource("3_hn0ve")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 78.9373, 47.0606, 0)
+
+[node name="Submarine2" parent="." instance=ExtResource("3_hn0ve")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -61.1152, 8.02092, 0)
+Direction = 1
+Speed = 50

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dx776ftifwqct"]
+
+[ext_resource type="Script" path="res://Scenes/Submarine/SubmarineArea.gd" id="1_uigs0"]
+[ext_resource type="PackedScene" uid="uid://b42cw8315os2k" path="res://Scenes/Submarine/Submarine.glb" id="1_wjjsa"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1wxki"]
+size = Vector3(14.1103, 14.0124, 33.3984)
+
+[node name="AreaSub                                                                  AreaSubmarine" type="Area3D"]
+collision_layer = 2
+script = ExtResource("1_uigs0")
+
+[node name="Submarine" parent="." instance=ExtResource("1_wjjsa")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+shape = SubResource("BoxShape3D_1wxki")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

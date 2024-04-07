@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://by0rwn81e0oo2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uhltl"]
+albedo_color = Color(0.141176, 0.196078, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_aoeqq"]
+material = SubResource("StandardMaterial3D_uhltl")
+size = Vector3(100, 1, 10)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_1r2d1"]
+data = PackedVector3Array(-50, 0.5, 5, 50, 0.5, 5, -50, -0.5, 5, 50, 0.5, 5, 50, -0.5, 5, -50, -0.5, 5, 50, 0.5, -5, -50, 0.5, -5, 50, -0.5, -5, -50, 0.5, -5, -50, -0.5, -5, 50, -0.5, -5, 50, 0.5, 5, 50, 0.5, -5, 50, -0.5, 5, 50, 0.5, -5, 50, -0.5, -5, 50, -0.5, 5, -50, 0.5, -5, -50, 0.5, 5, -50, -0.5, -5, -50, 0.5, 5, -50, -0.5, 5, -50, -0.5, -5, 50, 0.5, 5, -50, 0.5, 5, 50, 0.5, -5, -50, 0.5, 5, -50, 0.5, -5, 50, 0.5, -5, -50, -0.5, 5, 50, -0.5, 5, -50, -0.5, -5, 50, -0.5, 5, 50, -0.5, -5, -50, -0.5, -5)
+
+[node name="WaterLine" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+cast_shadow = 0
+mesh = SubResource("BoxMesh_aoeqq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_1r2d1")
